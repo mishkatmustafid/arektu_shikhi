@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class LogInScreen extends StatefulWidget {
-  const LogInScreen({ Key? key }) : super(key: key);
+  const LogInScreen({Key? key}) : super(key: key);
   @override
   _LogInScreenState createState() => _LogInScreenState();
 }
 
 class _LogInScreenState extends State<LogInScreen> {
-  _onLogIn(){
-
+  _onLogIn() {
+    Navigator.pushNamed(context, '/profile');
   }
+
   // backgroundColor: Color(0xFF81d8d0),
   @override
   Widget build(BuildContext context) {
@@ -17,9 +18,9 @@ class _LogInScreenState extends State<LogInScreen> {
       backgroundColor: Color(0xFFfeff9e),
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
-        onTap: ()=>FocusManager.instance.primaryFocus?.unfocus(),
+        onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Stack(
-          children:<Widget>[ 
+          children: <Widget>[
             Positioned(
               left: 230,
               top: -120,
@@ -33,7 +34,7 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
             ),
             Positioned(
-              right: MediaQuery.of(context).size.width*0.5 - 275,
+              right: MediaQuery.of(context).size.width * 0.5 - 275,
               bottom: -350,
               child: Container(
                 width: 550,
@@ -55,14 +56,18 @@ class _LogInScreenState extends State<LogInScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     'Log in to your account',
                     style: TextStyle(
                       fontSize: 12,
                     ),
-                  ),  
-                  SizedBox(height: 10,),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     width: 200,
                     child: TextField(
@@ -71,20 +76,18 @@ class _LogInScreenState extends State<LogInScreen> {
                         hintText: 'Username',
                       ),
                     ),
-                  ), 
+                  ),
                   Container(
                     width: 200,
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
-                        hintText: 'Password',
-                        hintStyle: TextStyle(
-                          
-                        )
-                      ),
+                          hintText: 'Password', hintStyle: TextStyle()),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Container(
                     width: 100,
                     child: ElevatedButton(
@@ -98,20 +101,21 @@ class _LogInScreenState extends State<LogInScreen> {
                   SizedBox(height: 20),
                   Container(
                     child: GestureDetector(
-                      onTap: (){
-                        
+                      onTap: () {
+                        Navigator.pop(context);
                       },
                       child: Text(
                         'Register',
                         style: TextStyle(
-                          decoration: TextDecoration.underline, 
-                        ),  
+                          decoration: TextDecoration.underline,
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-          ),],
+            ),
+          ],
         ),
       ),
     );
