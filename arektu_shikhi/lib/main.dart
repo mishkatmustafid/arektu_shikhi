@@ -1,9 +1,6 @@
-import 'package:arektu_shikhi/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'login.dart';
-import 'signup.dart';
-import 'dashboard.dart';
+import 'package:arektu_shikhi/routes.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
@@ -17,16 +14,10 @@ class MyApp extends StatelessWidget {
       title: 'Arektu Shikhi',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
       ),
-      // home: SignUpScreen(),
       initialRoute: '/signup',
-      routes: {
-        '/login': (context) => LogInScreen(),
-        '/signup': (context) => SignUpScreen(),
-        '/': (context) => Dashboard(),
-        '/profile': (context) => Profile(),
-      },
+      routes: routes,
     );
   }
 }
