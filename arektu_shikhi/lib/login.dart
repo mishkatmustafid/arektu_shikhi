@@ -8,7 +8,7 @@ class LogInScreen extends StatefulWidget {
 
 class _LogInScreenState extends State<LogInScreen> {
   _onLogIn() {
-    Navigator.pushNamed(context, '/profile');
+    Navigator.pushNamed(context, '/');
   }
 
   // backgroundColor: Color(0xFF81d8d0),
