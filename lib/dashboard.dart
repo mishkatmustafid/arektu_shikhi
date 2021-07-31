@@ -14,14 +14,53 @@ class _DashboardState extends State<Dashboard> {
       appBar: AppBar(
         title: Text('Dashboard'),
         elevation: 0,
-      
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: ListView(
-          children: <Widget>[
-            Text('Item 1'),
-            Text('Item 2'),
-            Text('Item 3'),
+          scrollDirection: Axis.vertical,
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Center(child: Text('Item 01')),
+              height: 100,
+              color: Colors.greenAccent,
+            ),
+            SizedBox(height: 10,),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Center(child: Text('Item 02')),
+              height: 100,
+              color: Colors.blueGrey,
+            ),
+            SizedBox(height: 10,),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Center(child: Text('Item 03')),
+              height: 100,
+              color: Colors.red,
+            ),
+            SizedBox(height: 10,),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Center(child: Text('Item 03')),
+              height: 100,
+              color: Colors.red,
+            ),
+            SizedBox(height: 10,),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Center(child: Text('Item 03')),
+              height: 100,
+              color: Colors.red,
+            ),
+            SizedBox(height: 10,),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: Center(child: Text('Item 03')),
+              height: 100,
+              color: Colors.red,
+            ),
           ],
         ),
       ),
