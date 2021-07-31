@@ -1,4 +1,4 @@
-package com.example.arektu_shikhi
+package com.falcons.arektushikhi
 
 import io.flutter.embedding.android.FlutterActivity
 
