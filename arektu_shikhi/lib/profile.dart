@@ -64,15 +64,19 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10,),
                 Container(
+                  padding: EdgeInsets.all(5),
                   alignment: Alignment.centerLeft,
                   child: Text('Full Name: Alex Murphy')
                 ),
                 Container(
+                  padding: EdgeInsets.all(5),
                   alignment: Alignment.centerLeft,
                   child: Text('Phone Number: +880 1234-123456')
                 ),
                 Container(
+                  padding: EdgeInsets.all(5),
                   alignment: Alignment.centerLeft,
                   child: Text('Class: 4th')
                 ),
@@ -85,7 +89,7 @@ class _ProfileState extends State<Profile> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 100,),
+                SizedBox(height: 20,),
                 Container(
                   alignment: Alignment.center,
                   child: Text('Progress',
