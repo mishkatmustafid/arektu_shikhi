@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "741180493857",
+    "project_id": "arektu-shikhi",
+    "storage_bucket": "arektu-shikhi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741180493857:android:27d5c6a90a1b28085ed360",
+        "android_client_info": {
+          "package_name": "com.falcons.arektushikhi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741180493857-vjsgssboloeqhhmnurin08da826t0mdv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXBaxfJT-dbdL_7ci7VsGipTS_G6j8hao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741180493857-vjsgssboloeqhhmnurin08da826t0mdv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
