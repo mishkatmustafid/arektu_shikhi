@@ -10,8 +10,21 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Dashboard'),
+        elevation: 0,
       
+      ),
+      body: SafeArea(
+        child: ListView(
+          children: <Widget>[
+            Text('Item 1'),
+            Text('Item 2'),
+            Text('Item 3'),
+          ],
+        ),
+      ),
     );
   }
 }
