@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:741180493857:android:27d5c6a90a1b28085ed360",
+        "mobilesdk_app_id": "1:741180493857:android:b60dd7ffefec8d705ed360",
         "android_client_info": {
-          "package_name": "com.falcons.arektushikhi"
+          "package_name": "com.example.arektu_shikhi"
         }
       },
       "oauth_client": [
