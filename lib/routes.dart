@@ -1,8 +1,8 @@
-import 'package:arektu_shikhi/login.dart';
-import 'package:arektu_shikhi/signup.dart';
+import 'package:arektu_shikhi/screens/login.dart';
+import 'package:arektu_shikhi/screens/signup.dart';
 // import 'package:arektu_shikhi/itemview.dart';
-import 'package:arektu_shikhi/dashboard.dart';
-import 'package:arektu_shikhi/profile.dart';
+import 'package:arektu_shikhi/screens/dashboard.dart';
+import 'package:arektu_shikhi/screens/profile.dart';
 import 'package:flutter/cupertino.dart';
 
 final Map<String, WidgetBuilder> routes = {

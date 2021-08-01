@@ -64,6 +64,12 @@ class _DashboardState extends State<Dashboard> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/profile');
+        },
+        child: Text('Profile'),
+      ),
     );
   }
 }
