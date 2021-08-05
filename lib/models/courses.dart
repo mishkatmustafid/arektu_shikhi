@@ -21,19 +21,19 @@ class Course {
 List<Course> courses = [
   Course(
     "Dart for Android Developers", 
-    "https://www.youtube.com/watch?v=XBKzpTz65Io", 
+    "https://www.youtube.com/watch?v=wHXl4HeuwiM", 
     Colors.blue,
   ),
 
   Course(
     "Android for Beginners", 
-    "https://www.youtube.com/watch?v=XBKzpTz65Io", 
+    "https://www.youtube.com/watch?v=CRZPkwmoOpM", 
     Colors.green
   ),
 
   Course(
     "Android for Beginners", 
-    "https://www.youtube.com/watch?v=XBKzpTz65Io", 
+    "https://www.youtube.com/watch?v=CRZPkwmoOpM", 
     Colors.amber
   ),
 ];
