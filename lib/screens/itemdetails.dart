@@ -1,5 +1,6 @@
 import 'package:arektu_shikhi/models/courses.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ItemScreen extends StatefulWidget {
   final Course course;
@@ -10,6 +11,10 @@ class ItemScreen extends StatefulWidget {
 }
 
 class _ItemviewState extends State<ItemScreen> {
+  // var url=" ";
+  // if(course['link']!=null) {
+  //   url = course['link'];
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,11 +36,26 @@ class _ItemviewState extends State<ItemScreen> {
         automaticallyImplyLeading: false,
         backgroundColor: widget.course.color,
       ),
-      // body: 
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        child: YoutubePlayer(
+          controller: new YoutubePlayerController(
+            // initialVideoId: YoutubePlayer.convertUrlToId(widget.course.link),
+            // initialVideoId: widget.course.link,
+            initialVideoId: "wHXl4HeuwiM",
+            flags: YoutubePlayerFlags(
+              autoPlay: false,
+              mute: false,
+              disableDragSeek: false,
+              loop: false,
+              isLive: false,
+              forceHD: false,
+            ),
+          ),
+          showVideoProgressIndicator: true,
+          liveUIColor: Colors.amber,
+        ),
+      ),
     );
   }
 }
-
-// https://www.youtube.com/watch?v=wHXl4HeuwiM
-// https://youtu.be/wHXl4HeuwiM
-// https://www.youtube.com/embed/wHXl4HeuwiM
