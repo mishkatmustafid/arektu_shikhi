@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Course {
-  String title ="", link ="";
+  String title =" ", link =" ";
   Color color = new Color(0xFF00FF);
   // Map quiz= new Map();
 
-  // Course({
-  //   this.title, 
-  //   this.link,
-  //   this.color,
-  // });
   Course(String title, String link, Color color){
     this.title = title;
     this.link = link;
@@ -17,6 +12,10 @@ class Course {
     // this.quiz = quiz;
   }
 }
+
+// class Questions{
+//   String question = "", option1 = "", option2 = "", option3 = "", option4 = "", correctAnswer = "";
+// }
 
 List<Course> courses = [
   Course(
