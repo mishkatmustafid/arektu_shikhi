@@ -1,17 +1,17 @@
 // import 'dart:math';
-import 'package:arektu_shikhi/screens/dashboard.dart';
+import 'package:arektu_shikhi/views/dashboard.dart';
 import 'package:arektu_shikhi/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+class SignUpView extends StatefulWidget {
+  const SignUpView({Key? key}) : super(key: key);
 
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _SignUpViewState createState() => _SignUpViewState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignUpViewState extends State<SignUpView> {
   final _formkey = GlobalKey<FormState>();
   String username = "", name = "", phone = "", grade = "", userId = "";
   UserAuth userAuth = UserAuth();

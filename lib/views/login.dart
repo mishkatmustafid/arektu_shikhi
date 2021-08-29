@@ -1,14 +1,14 @@
-import 'package:arektu_shikhi/screens/dashboard.dart';
+import 'package:arektu_shikhi/views/dashboard.dart';
 import 'package:arektu_shikhi/services/auth.dart';
 import 'package:flutter/material.dart';
 
-class LogInScreen extends StatefulWidget {
-  const LogInScreen({Key? key}) : super(key: key);
+class LogInView extends StatefulWidget {
+  const LogInView({Key? key}) : super(key: key);
   @override
-  _LogInScreenState createState() => _LogInScreenState();
+  _LogInViewState createState() => _LogInViewState();
 }
 
-class _LogInScreenState extends State<LogInScreen> {
+class _LogInViewState extends State<LogInView> {
   final _formkey = GlobalKey<FormState>();
   String username = "", phone = "";
   UserAuth userAuth = UserAuth();

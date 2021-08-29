@@ -1,4 +1,4 @@
-import 'package:arektu_shikhi/screens/itemdetails.dart';
+import 'package:arektu_shikhi/views/itemdetails.dart';
 import 'package:arektu_shikhi/services/database.dart';
 import 'package:arektu_shikhi/models/courses.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class _DashboardState extends State<Dashboard> {
             onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ItemScreen(
+                    builder: (context) => ItemView(
                           course: courses[index],
                         ))),
             child: Container(
