@@ -1,6 +1,6 @@
 // import 'dart:math';
 import 'package:arektu_shikhi/screens/dashboard.dart';
-import 'package:arektu_shikhi/services/database.dart';
+import 'package:arektu_shikhi/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
 
@@ -14,7 +14,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formkey = GlobalKey<FormState>();
   String username = "", name = "", phone = "", grade = "", userId = "";
-  DatabaseService databaseService = new DatabaseService();
+  UserAuth userAuth = UserAuth();
   bool _isLoading = false;
 
   _onSignUp() async {
@@ -27,9 +27,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
         "username": username,
         "name": name,
         "phone": phone,
-        "grade": grade
+        "grade": grade,
+        "isAdmin": "No",
       };
-      await databaseService.addUser(userMap, userId).then((value) {
+      await userAuth.addUser(userMap, userId).then((value) {
         setState(() {
           _isLoading = false;
         });

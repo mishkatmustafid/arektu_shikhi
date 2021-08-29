@@ -1,3 +1,5 @@
+import 'package:arektu_shikhi/screens/dashboard.dart';
+import 'package:arektu_shikhi/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class LogInScreen extends StatefulWidget {
@@ -7,8 +9,24 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
-  _onLogIn() {
-    Navigator.pushNamed(context, '/');
+  final _formkey = GlobalKey<FormState>();
+  String username = "", phone = "";
+  UserAuth userAuth = UserAuth();
+  bool _isLoading = false;
+  _onLogIn() async {
+    if (_formkey.currentState!.validate()) {
+      setState(() {
+        _isLoading = true;
+      });
+      Map<String, String> user = {"username": username, "phone": phone};
+      await userAuth.getUser(user).then((value) {
+        setState(() {
+          _isLoading = false;
+        });
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Dashboard()));
+      });
+    }
   }
 
   // backgroundColor: Color(0xFF81d8d0),
@@ -46,74 +64,100 @@ class _LogInScreenState extends State<LogInScreen> {
               ),
             ),
             Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    'Welcome Back',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Log in to your account',
-                    style: TextStyle(
-                      fontSize: 12,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    width: 200,
-                    child: TextField(
-                      keyboardType: TextInputType.name,
-                      decoration: InputDecoration(
-                        hintText: 'Username',
+              child: _isLoading
+                  ? Container(
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : Form(
+                      key: _formkey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Welcome Back',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Log in to your account',
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            width: 200,
+                            child: TextFormField(
+                              validator: (val) {
+                                return val!.isEmpty
+                                    ? "Enter correct Username"
+                                    : null;
+                              },
+                              onChanged: (val) {
+                                this.username = val;
+                              },
+                              keyboardType: TextInputType.name,
+                              decoration: InputDecoration(
+                                hintText: 'Username',
+                              ),
+                            ),
+                          ),
+                          Container(
+                            width: 200,
+                            child: TextFormField(
+                              validator: (val) {
+                                return val!.isEmpty
+                                    ? "Enter correct phone number"
+                                    : null;
+                              },
+                              onChanged: (val) {
+                                this.phone = val;
+                              },
+                              keyboardType: TextInputType.phone,
+                              decoration: InputDecoration(
+                                hintText: 'Phone Number',
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Container(
+                            width: 100,
+                            child: ElevatedButton(
+                              onPressed: () => _onLogIn(),
+                              child: Text('Log In'),
+                              style: ElevatedButton.styleFrom(
+                                primary: Color(0xFFff8f8f),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Container(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Text(
+                                'Register',
+                                style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 200,
-                    child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          hintText: 'Password', hintStyle: TextStyle()),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: 100,
-                    child: ElevatedButton(
-                      onPressed: () => _onLogIn(),
-                      child: Text('Log In'),
-                      style: ElevatedButton.styleFrom(
-                        primary: Color(0xFFff8f8f),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ),
