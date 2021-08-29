@@ -1,7 +1,13 @@
 class User {
-  String username = "", fullname = "", phone = "", grade = "";
+  String 
+  uid = "",
+  username = "",
+  fullname = "",
+  phone = "", 
+  grade = "";
 
-  User(String username, String fullname, String phone, String grade) {
+  User(String uid, String username, String fullname, String phone, String grade) {
+    this.uid = uid;
     this.username = username;
     this.fullname = fullname;
     this.phone = phone;
