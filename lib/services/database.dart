@@ -1,32 +1,23 @@
+import 'package:arektu_shikhi/models/courses.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class DatabaseService {
-  // ignore: unused_field
-  final Future<FirebaseApp> _initializeApp = Firebase.initializeApp();
+  // Course _courseDataFromSnapshot(QuerySnapshot snapshot) {
+  //   return Course(
+  //     snapshot.data['title'],
+  //     snapshot.data['link'],
+  //   );
+  // }
+
   // collection reference
-  // final CollectionReference courseCollection =
-  //     FirebaseFirestore.instance.collection('courses');
-  // Stream courseStream =
-  //     FirebaseFirestore.instance.collection('courses').snapshots();
+  final CollectionReference courseCollection =
+      FirebaseFirestore.instance.collection('courses');
 
   // get all courses
-
-  Future<void> getCourses() async {
-    QuerySnapshot querySnapshot =
-        await FirebaseFirestore.instance.collection('courses').get();
-    final allData = querySnapshot.docs.map((e) => e.data()).toList();
-    try {
-      print(allData);
-    } catch (e) {
-      print(e);
-    }
+  Future<Stream> getCourses() async {
+    return FirebaseFirestore.instance.collection('courses').snapshots();
   }
 
-  Future<void> addUser(Map<String, String> userMap, String userId) async {
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .set(userMap)
-        .catchError((e) => print(e));
-  }
+  // create course
+
+}

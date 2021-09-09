@@ -35,10 +35,7 @@ class _SignUpViewState extends State<SignUpView> {
           _isLoading = false;
         });
         Navigator.pushReplacement(
-          context, MaterialPageRoute(
-            builder: (context) => Dashboard()
-          )
-        );
+            context, MaterialPageRoute(builder: (context) => Dashboard()));
       });
     }
   }

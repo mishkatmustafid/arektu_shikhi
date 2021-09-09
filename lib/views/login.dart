@@ -14,6 +14,7 @@ class _LogInViewState extends State<LogInView> {
   UserAuth userAuth = UserAuth();
   bool _isLoading = false;
   _onLogIn() async {
+    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Dashboard()));
     if (_formkey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
