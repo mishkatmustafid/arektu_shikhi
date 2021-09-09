@@ -46,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
       ),
       body: SafeArea(
         child: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection('courses').snapshots(),
+          stream: FirebaseFirestore.instance.collection('courses').orderBy('index').snapshots(includeMetadataChanges: true),
           // stream: _courses,
           builder: (context, snapshot) {
           return (snapshot.hasData && !_isLoading)
