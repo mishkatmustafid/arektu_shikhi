@@ -1,23 +1,18 @@
-import 'package:arektu_shikhi/models/courses.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:arektu_shikhi/services/database.dart';
 
 class ItemView extends StatefulWidget {
-  final Course course;
-  const ItemView({Key? key, required this.course}) : super(key: key);
-  
+  final DocumentSnapshot snapshot;
+  const ItemView({Key? key, required this.snapshot}) : super(key: key);
 
   @override
   _ItemViewState createState() => _ItemViewState();
 }
 
 class _ItemViewState extends State<ItemView> {
-  // var url=" ";
-  // if(course['link']!=null) {
-  //   url = course['link'];
-  // }
-  late DatabaseService db;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +24,8 @@ class _ItemViewState extends State<ItemView> {
             ),
             onPressed: () => Navigator.pop(context, false)),
         title: Text(
-          widget.course.title,
+          // widget.course.title,
+          widget.snapshot['title'],
           style: TextStyle(
             color: Colors.black,
           ),
@@ -37,7 +33,7 @@ class _ItemViewState extends State<ItemView> {
         centerTitle: true,
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: widget.course.color,
+        backgroundColor: Colors.blue[200],
       ),
       body: Column(
         children: [
@@ -47,7 +43,7 @@ class _ItemViewState extends State<ItemView> {
               controller: new YoutubePlayerController(
                 // initialVideoId: YoutubePlayer.convertUrlToId(widget.course.link),
                 // initialVideoId: widget.course.link,
-                initialVideoId: "wHXl4HeuwiM",
+                initialVideoId: widget.snapshot['link'],
                 flags: YoutubePlayerFlags(
                   autoPlay: false,
                   mute: false,
