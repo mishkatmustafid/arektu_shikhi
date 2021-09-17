@@ -1,8 +1,9 @@
-import 'package:arektu_shikhi/views/itemdetails.dart';
 import 'package:arektu_shikhi/services/database.dart';
-import 'package:arektu_shikhi/models/courses.dart';
+import 'package:arektu_shikhi/views/itemdetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'widgets/cards.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -12,22 +13,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  DatabaseService databaseService = DatabaseService();
-  late Stream<QuerySnapshot> _courses;
+  Stream<QuerySnapshot> _courses = DatabaseService().coursesList();
   bool _isLoading = false;
-  @override
-  void initState() {
-    print("initState start");
-    databaseService.getCourses().then((snapshot) {
-      setState(() {
-        _courses = snapshot as Stream<QuerySnapshot<Object?>>;
-        _isLoading = false;
-      });
-      print(_courses);
-    });
-    super.initState();
-    print("initState end");
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,58 +29,46 @@ class _DashboardState extends State<Dashboard> {
         centerTitle: true,
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue,
       ),
       body: SafeArea(
-        child: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection('courses').orderBy('index').snapshots(includeMetadataChanges: true),
-          // stream: _courses,
-          builder: (context, snapshot) {
-          return (snapshot.hasData && !_isLoading)
-          ? ListView.builder(
-            // itemCount: courses.length,
-            itemCount: snapshot.data!.docs.length,
-            itemBuilder: (context, index){
-              DocumentSnapshot documentSnapshot = snapshot.data!.docs[index]; 
-              return GestureDetector(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ItemView(
-                              index: index,
-                            ))),
-                child: Container(
-                  margin: EdgeInsets.all(10),
-                  child: Center(
-                    child: Text(
-                      // (snapshot.data! as QuerySnapshot).docs[index].data['title'],
-                      documentSnapshot['title'],
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'Arial',
-                        letterSpacing: 0.8,
-                      ),
-                    ),
-                  ),
-                  height: 100,
-                  color: Colors.blue[200],
-                ),
-              );
-            }
-          )
-          :  Container(
-            child: Center(
-              child: CircularProgressIndicator(),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/img/bg_03.jpg"),
+              fit: BoxFit.cover,
             ),
-          );}
+          ),
+          child: StreamBuilder<QuerySnapshot>(
+            stream: _courses,
+            builder: (context, snapshot) {
+              return (!snapshot.hasData || _isLoading)
+                  ? Container(
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  : ListView.builder(
+                      itemCount: snapshot.data!.docs.length,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot documentSnapshot = snapshot.data!.docs[index];
+                        return GestureDetector(
+                          onTap: () {
+                            print(documentSnapshot.data().toString());
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ItemView(snapshot: documentSnapshot)));
+                          },
+                          child: CourseCard(documentSnapshot: documentSnapshot),
+                        );
+                      });
+            }
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/profile');
-          // databaseService.getCourses();
-          // print(_courses);
         },
         child: Text('Profile'),
       ),
