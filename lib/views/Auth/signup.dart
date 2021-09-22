@@ -23,12 +23,12 @@ class _SignUpViewState extends State<SignUpView> {
         _isLoading = true;
       });
       userId = randomAlphaNumeric(16);
-      Map<String, String> userMap = {
+      Map<String, dynamic> userMap = {
         "username": username,
         "name": name,
         "phone": phone,
         "grade": grade,
-        "isAdmin": "No",
+        "isAdmin": false,
       };
       await userAuth.addUser(userMap, userId).then((value) {
         setState(() {
